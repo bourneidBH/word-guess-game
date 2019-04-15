@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hangman</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Harry Potter Hangman</h1>
+            <p>Press any key to start the game.</p>
+            </header>
+        <main class="clearfix">
+            <!-- image column -->
+            <div class="col-md-4">
+                <img id="man">
+            </div>
+            <!-- game text column -->
+            <div class="col-md-8">
+                <h2>Current word</h2>
+                <p id="blanks" class="lettersHidden"></p>
+                <p>Wins: <span id="totalWins"></span></p>
+                <p>Losses: <span id="totalLosses"</p>
+                <p>Number of incorrect guesses remaining: <span id="remGuesses"></span></p>
+                <p>Letters already guessed: <span id="guessedLetters"></span></p>
+            </div>
+        </main>
+
+
+    </div><!-- end container -->
+    <!-- javascript link -->
+    <script type="text/javascript" src="assets/javascript/game.js"></script>
+</body>
+</html>
