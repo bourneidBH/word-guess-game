@@ -57,13 +57,7 @@ function newGame () {
     displayWordBlanks();
 
 
-    //Change HTML elements to display current information
-    document.getElementById("remGuesses").innerHTML = wrongGuessesLeft;
-    document.getElementById("totalWins").innerHTML = wins;
-    document.getElementById("totalLosses").innerHTML = losses;
 
-    //reset hangman image
-    document.getElementById("man").src = "assets/images/hangman-" + wrongGuessesLeft + ".png";
    
 }
 
@@ -84,8 +78,20 @@ document.onkeyup = function () {
         }
         else {
             wrongLetters.push(userGuess);
+            wrongGuessesLeft = wrongGuessesLeft -1;
             console.log("wrong letters are: " + wrongLetters);
+            console.log("wrong guesses left: " + wrongGuessesLeft);
         } 
+
+            //Change HTML elements to display current information
+            document.getElementById("remGuesses").innerHTML = wrongGuessesLeft;
+            document.getElementById("totalWins").innerHTML = wins;
+            document.getElementById("totalLosses").innerHTML = losses;
+            document.getElementById("guessedLetters").innerHTML = wrongLetters;
+
+
+            //reset hangman image
+            document.getElementById("man").src = "assets/images/hangman-" + wrongGuessesLeft + ".png";
 
     }
 
