@@ -1,16 +1,19 @@
 //global variables
 
-var wordArray = ["HERMIONE", "HOGWARTS", "NIFFLER", "VOLDEMORT", "POLYJUICE", "WAND", "DOBBY"];
+var wordArray = ["HERMIONE", "HOGWARTS", "NIFFLER", "VOLDEMORT", "POLYJUICE", "WAND", "DOBBY", "NAGINI", "DUMBLEDORE", "HORCRUX", "POTION", "BUCKBEAK"];
 // empty variable to hold current word choice from the array
 var word = "";
 // Empty variable to hold the actual letters in the word
 var wordLetters = [];
 // Variable that holds the number of blanks "_" in the word
 var numBlanks = 0;
-var hiddenWord = "";
+// Variable to record user guess
+userGuess = "";
+
 // Empty array to store the answer as it displays for the user
 var answerDisplay = [];
-
+// Empty array to hold all correct guesses
+var correctLetters = [];
 // Empty array to hold all the wrong guesses
 var wrongLetters = [];
 
@@ -61,27 +64,47 @@ function newGame () {
 
     //reset hangman image
     document.getElementById("man").src = "assets/images/hangman-" + wrongGuessesLeft + ".png";
-    
+   
 }
 
 //start the game on any key pressed
 document.onkeyup = function () {
     newGame();
+
+    // function to record user key choice. Change case to all caps.
+    document.onkeyup = function(event) {
+        userGuess = event.key.toUpperCase();
+        console.log("user guess is " + userGuess);
+
+        // check if user key choice is included in word. 
+
+       if (wordLetters.indexOf(userGuess) != -1) {
+            correctLetters.push(userGuess);
+            console.log("correct letters are: " + correctLetters);
+        }
+        else {
+            wrongLetters.push(userGuess);
+            console.log("wrong letters are: " + wrongLetters);
+        } 
+
+    }
+
+    /* If key choice included in word display letter in appropriate spot. 
+        If not included display letter in letters already guessed, increment number of guesses remaining down by 1, 
+        change hangman image to show next body image step */
+
+    // function to record number of wins
+
+    // function to display number of wins
+
+    // function to load next word. Repeat until end of word array
+
+    // function to display end of game message
+
+
 }
 
 
-// function to record user key choice. Change case to all caps.
 
-// function to check if user key choice is included in word. 
 
-/* If key choice included in word display letter in appropriate spot. 
-    If not included display letter in letters already guessed, increment number of guesses remaining down by 1, 
-    change hangman image to show next body image step */
 
-// function to record number of wins
-
-// function to display number of wins
-
-// function to load next word. Repeat until end of word array
-
-// function to display end of game message

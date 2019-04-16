@@ -56,18 +56,10 @@ p {
     margin-bottom: 10px;
     text-align: center;
 }
-.underscores {
-    text-decoration-line: underline;
-}
 
-.lettersHidden {
+.letters {
     margin-top: 20px;
     font-size: 1.3rem;
     letter-spacing: 105%;
     margin-bottom: 20px;
-    /* visibility: hidden; */
 }
-.lettersReveal {
-    visibility: visible;
-}
-
