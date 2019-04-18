@@ -17,6 +17,7 @@ body {
 }
 header {
     margin-bottom: 30px;
+    text-align: center;
 }
 main {
     position: relative;
@@ -48,13 +49,14 @@ h2 {
 .col-md-8 {
     width: 66.66%;
     float: right;
+    text-align: center;
 }
 img {
     max-width: 100%;
 }
 p {
     margin-bottom: 10px;
-    text-align: center;
+    /*text-align: center;*/
 }
 
 .letters {
@@ -63,4 +65,24 @@ p {
     line-height: 120%;
     letter-spacing: 105%;
     margin-bottom: 20px;
+}
+.btn {
+    padding: 10px;
+    font-size: 1rem;
+    background-color: black;
+    color: #fff;
+    float: left;
+    margin-right: 20px;
+}
+.btn:hover {
+    background-color: red;
+}
+.gameMessage {
+    color: red;
+}
+.resetHidden {
+    display: none;
+}
+.resetShow {
+    display: inline-block;
 }

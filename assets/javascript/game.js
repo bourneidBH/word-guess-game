@@ -74,8 +74,16 @@ document.onkeyup = function () {
 
        if (wordLetters.indexOf(userGuess) != -1) {
             correctLetters.push(userGuess);
+
+            //for loop to step through each value in wordLetters array 
+            //check each index for match to userGuess
+            //for each match push userGuess to correctLetters 
             console.log("correct letters are: " + correctLetters);
+
+            //If key choice included in word display letter in appropriate spot. 
+
         }
+        //If not included display letter in letters already guessed, increment number of guesses remaining down by 1 
         else {
             wrongLetters.push(userGuess);
             wrongGuessesLeft = wrongGuessesLeft -1;
@@ -83,34 +91,47 @@ document.onkeyup = function () {
             console.log("wrong guesses left: " + wrongGuessesLeft);
         } 
 
-            //Change HTML elements to display current information
-            document.getElementById("remGuesses").innerHTML = wrongGuessesLeft;
-            document.getElementById("totalWins").innerHTML = wins;
-            document.getElementById("totalLosses").innerHTML = losses;
-            document.getElementById("guessedLetters").innerHTML = wrongLetters;
+        //check for win. 
+        if (correctLetters.length === wordLetters.length) {
+            wins ++;
+            document.getElementById("winMessage").innerHTML = "You win!";
+            //Show game reset buttons
+            function gameOver() {
+                var element = document.getElementById("gameReset");
+                element.classList.toggle("resetShow");
+              }
+              gameOver();
+        }
+        //check for loss
+        if (wrongGuessesLeft === 0) {
+            losses ++;
+            document.getElementById("lossMessage").innerHTML = "Game over. You Lost!" + "<br>" + "The correct word is " + word;
+            //Show game reset buttons
+            function gameOver() {
+                var element = document.getElementById("gameReset");
+                element.classList.toggle("resetShow");
+              }
+              gameOver();
+
+        }
+        //Change HTML elements to display current information
+        document.getElementById("remGuesses").innerHTML = wrongGuessesLeft;
+        document.getElementById("totalWins").innerHTML = wins;
+        document.getElementById("totalLosses").innerHTML = losses;
+        document.getElementById("guessedLetters").innerHTML = wrongLetters;
 
 
-            //reset hangman image
-            document.getElementById("man").src = "assets/images/hangman-" + wrongGuessesLeft + ".png";
+        //update hangman image with next step
+        document.getElementById("man").src = "assets/images/hangman-" + wrongGuessesLeft + ".png";
 
     }
 
-    /* If key choice included in word display letter in appropriate spot. 
-        If not included display letter in letters already guessed, increment number of guesses remaining down by 1, 
-        change hangman image to show next body image step */
 
-    // function to record number of wins
+    // Display end of game message
 
-    // function to display number of wins
 
-    // function to load next word. Repeat until end of word array
+    // function to load next word.
 
-    // function to display end of game message
 
 
 }
-
-
-
-
-

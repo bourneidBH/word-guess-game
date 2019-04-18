@@ -12,7 +12,10 @@
     <div class="container">
         <header>
             <h1>Harry Potter Hangman</h1>
-            <p>Press any key to start the game.</p>
+            <p>
+                Press any key to start the game.
+                <!--<button id="startBtn" class="btn">Start Game</button>-->
+            </p>
             </header>
         <main class="clearfix">
             <!-- image column -->
@@ -28,6 +31,12 @@
                 <p>Number of incorrect guesses remaining: <span id="remGuesses"></span></p>
                 <p>Letters already guessed:</p>
                 <p id="guessedLetters"></p>
+                <p id="winMessage" class="gameMassage"></p>
+                <p id="lossMessage" class="gameMessage"></p>
+                <div id="gameReset" class="resetHidden">
+                    <button id="playAgain" class="btn">Play Again</button>
+                    <button id="quit" class="btn">Quit</button>
+                </div>
             </div>
         </main>
 
