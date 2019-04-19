@@ -13,8 +13,7 @@
         <header>
             <h1>Harry Potter Hangman</h1>
             <p>
-                Press any key to start the game.
-                <!--<button id="startBtn" class="btn">Start Game</button>-->
+                <button id="startBtn" class="btn">Start Game</button>
             </p>
             </header>
         <main class="clearfix">
@@ -24,18 +23,20 @@
             </div>
             <!-- game text column -->
             <div class="col-md-8">
-                <h2>Current word</h2>
-                <p id="blanks" class="letters"></p>
-                <p>Wins: <span id="totalWins"></span></p>
-                <p>Losses: <span id="totalLosses"</p>
-                <p>Number of incorrect guesses remaining: <span id="remGuesses"></span></p>
-                <p>Letters already guessed:</p>
-                <p id="guessedLetters"></p>
-                <p id="winMessage" class="gameMassage"></p>
-                <p id="lossMessage" class="gameMessage"></p>
+                <div class="clearfix">
+                    <h2>Current word</h2>
+                    <p id="blanks" class="letters"></p>
+                    <p>Wins: <span id="totalWins"></span></p>
+                    <p>Losses: <span id="totalLosses"</p>
+                    <p>Number of incorrect guesses remaining: <span id="remGuesses"></span></p>
+                    <p>Letters already guessed:</p>
+                    <p id="guessedLetters"></p>
+                    <p id="winMessage" class="gameMessage"></p>
+                    <p id="lossMessage" class="gameMessage"></p>
+                </div>
                 <div id="gameReset" class="resetHidden">
                     <button id="playAgain" class="btn">Play Again</button>
-                    <button id="quit" class="btn">Quit</button>
+                    <!--<button id="quit" class="btn">Quit</button>-->
                 </div>
             </div>
         </main>

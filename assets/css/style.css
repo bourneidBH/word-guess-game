@@ -71,14 +71,14 @@ p {
     font-size: 1rem;
     background-color: black;
     color: #fff;
-    float: left;
-    margin-right: 20px;
+    display: inline-block;
 }
 .btn:hover {
     background-color: red;
 }
 .gameMessage {
     color: red;
+    display: block;
 }
 .resetHidden {
     display: none;
