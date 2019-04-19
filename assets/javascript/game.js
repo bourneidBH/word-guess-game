@@ -46,18 +46,19 @@ function newGame () {
     answerDisplay = [];
     correctLetters = [];
 
-    //Add the correct number of blanks to the answerDisplay that corresponds with the length of the currentWord
+    //Add the correct number of blanks to the answerDisplay that corresponds with the length of the current word
 
-        function displayWordBlanks() {
+        function displayAnswer() {
         var e = "";   
             
         for (var y=0; y<wordLetters.length; y++)
         {
             e += "_ ";
+            answerDisplay[y] = "_";
         }
         document.getElementById("blanks").innerHTML = e;
     }
-    displayWordBlanks();
+    displayAnswer();
    
 }
 
@@ -81,14 +82,18 @@ document.getElementById("startBtn").addEventListener("click", newGame); {
             for (var w = 0; w < wordLetters.length; w++) {
                 if (wordLetters[w] === userGuess) {
                     correctLetters.push(userGuess);
-                    console.log("correct letter is at index " + wordLetters[w]);
+                    console.log("correct letters are: " + correctLetters);
 
+                    console.log("correct letter is at index " + wordLetters[w]);
+                    answerDisplay[w] = userGuess;
+                    
                 }
             }
-            
-            console.log("correct letters are: " + correctLetters);
-
+            console.log(answerDisplay);
             //If key choice included in word display letter in appropriate spot. 
+
+            document.getElementById("blanks").innerHTML = answerDisplay.join(" ");
+
 
         }
         //If not included display letter in letters already guessed, increment number of guesses remaining down by 1 
@@ -175,18 +180,19 @@ function resetGame () {
 
     //Add the correct number of blanks to the answerDisplay that corresponds with the length of the currentWord
 
-        function displayWordBlanks() {
+        function displayAnswer() {
         var e = "";   
             
         for (var y=0; y<wordLetters.length; y++)
         {
             e += "_ ";
+            answerDisplay[y] = "_"
         }
         document.getElementById("blanks").innerHTML = e;
     }
-    displayWordBlanks();
+    displayAnswer(); 
    
-}
+} 
 
     // function to load next word.
     document.getElementById("playAgain").addEventListener("click", resetGame);
