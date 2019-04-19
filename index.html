@@ -11,19 +11,21 @@
 <body>
     <div class="container">
         <header>
-            <h1>Harry Potter Hangman</h1>
-            <p>
-                <button id="startBtn" class="btn">Start Game</button>
-            </p>
-            </header>
+            <img src="assets/images/harry-potter_header11.png" alt="Harry Potter Hangman" />
+            <h1 class="resetHidden">Harry Potter Hangman</h1>
+        </header>
         <main class="clearfix">
             <!-- image column -->
             <div class="col-md-4">
-                <img id="man">
+                <img id="man" class="hangmanImg">
             </div>
             <!-- game text column -->
             <div class="col-md-8">
                 <div class="clearfix">
+                    <p>
+                        <button id="startBtn" class="btn">Start Game</button>
+                    </p>
+                
                     <h2>Current word</h2>
                     <p id="blanks" class="letters"></p>
                     <p>Wins: <span id="totalWins"></span></p>
@@ -36,10 +38,12 @@
                 </div>
                 <div id="gameReset" class="resetHidden">
                     <button id="playAgain" class="btn">Play Again</button>
-                    <!--<button id="quit" class="btn">Quit</button>-->
                 </div>
             </div>
         </main>
+        <footer class="clearfix">
+            <p>&copy; Images copyright Harry Potter</p>
+        </footer>
 
 
     </div><!-- end container -->

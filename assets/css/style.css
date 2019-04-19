@@ -4,25 +4,36 @@
     box-sizing: border-box;
 }
 body {
-    background-color: black;
+    background-color: #fff;
+    background: url("../images/HD-Hogwarts-Castle-Background.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
     font-family: Arial, Helvetica, sans-serif;
+    color: #000;
     font-size: 100%;
+
 }
 .container {
     position: relative;
     width: 70%;
     margin: 0 auto;
     background-color: #fff;
-    padding: 30px;
+    opacity: 0.9;
 }
 header {
-    margin-bottom: 30px;
     text-align: center;
 }
+/*header img {
+    max-height: 200px;
+}*/
 main {
     position: relative;
     height: auto;
     clear: both;
+    padding: 30px;
+
 }
 .clearfix::after {
     content: "";
@@ -54,11 +65,17 @@ h2 {
 img {
     max-width: 100%;
 }
+.hangmanImg {
+    max-width: 100%;
+}
 p {
     margin-bottom: 10px;
-    /*text-align: center;*/
+    text-align: center;
 }
-
+footer p {
+    font-size: 75%;
+    padding-bottom: 10px;
+}
 .letters {
     margin-top: 20px;
     font-size: 1.3rem;
@@ -69,15 +86,15 @@ p {
 .btn {
     padding: 10px;
     font-size: 1rem;
-    background-color: black;
+    background-color: #1e0c40;
     color: #fff;
     display: inline-block;
 }
 .btn:hover {
-    background-color: red;
+    background-color:#8315c4;
 }
 .gameMessage {
-    color: red;
+    color: #8315c4;
     display: block;
 }
 .resetHidden {
@@ -85,4 +102,26 @@ p {
 }
 .resetShow {
     display: inline-block;
+}
+@media screen and (max-width: 640px) {
+    .container {
+        width: 100%;
+    }
+    .col-md-4 {
+        width: 100%;
+        float: none;
+        display: block;
+        clear: both;
+    }
+    .col-md-8 {
+        width: 100%;
+        float: none;
+        display: block;
+        clear: both;
+        text-align: center;
+    }
+    .hangmanImg {
+        max-height: 300px;
+    align-content: center;    
+    }
 }

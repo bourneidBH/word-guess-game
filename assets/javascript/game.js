@@ -1,6 +1,6 @@
 //global variables
 
-var wordArray = ["HERMIONE", "HOGWARTS", "NIFFLER", "VOLDEMORT", "POLYJUICE", "WAND", "DOBBY", "NAGINI", "DUMBLEDORE", "HORCRUX", "POTION", "BUCKBEAK", "WEASLEY", "HARRY", "HAGRID", "MALFOY", "DRAGON", "WIZARD"];
+var wordArray = ["HERMIONE", "HOGWARTS", "NIFFLER", "VOLDEMORT", "POLYJUICE", "WAND", "DOBBY", "NAGINI", "DUMBLEDORE", "HORCRUX", "POTION", "BUCKBEAK", "WEASLEY", "HARRY", "HAGRID", "MALFOY", "DRAGON", "WIZARD", "QUIDDITCH"];
 // empty variable to hold current word choice from the array
 var word = "";
 // Empty variable to hold the actual letters in the word
