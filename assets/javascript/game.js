@@ -62,7 +62,6 @@ function newGame () {
 }
 
 
-
 //press button to start game
 document.getElementById("startBtn").addEventListener("click", newGame); {
     newGame();
@@ -166,6 +165,10 @@ function resetGame () {
     answerDisplay = [];
     correctLetters = [];
 
+    //reset hangman image to original
+    document.getElementById("man").src = "assets/images/hangman-" + wrongGuessesLeft + ".png";
+
+
     //hide previous win/loss message
     document.getElementById("winMessage").innerHTML = "";
     document.getElementById("lossMessage").innerHTML = "";
@@ -185,10 +188,8 @@ function resetGame () {
    
 }
 
-
     // function to load next word.
     document.getElementById("playAgain").addEventListener("click", resetGame);
     resetGame();
-
 
 }
