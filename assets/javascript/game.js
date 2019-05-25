@@ -27,7 +27,11 @@ var wordArray = [
     "FIREBOLT",
     "PHOENIX",
     "POTTER",
-    "OWL"
+    "HEDWIG",
+    "GRYFFINDOR",
+    "SLYTHERIN",
+    "HUFFLEPUFF",
+    "RAVENCLAW"
 ];
 // empty variable to hold current word choice from the array
 var word = "";
