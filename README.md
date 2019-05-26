@@ -1,12 +1,10 @@
 # word-guess-game
 
-Press the "Start Game" button to load a new word.
-
-Then use the keyboard to make your letter guesses.
+Game starts when you press any letter key to make your first guess.
 
 Correct letter guesses will replace the blanks in the word.
 
-Incorrect guesses will display under "Letters already guessed." 
+Incorrect guesses will display under "Incorrect letters already guessed." 
 
 If you complete all the blanks in the word before the man hangs you win.
 
