@@ -10,6 +10,26 @@
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 <body>
+    <!-- Modal -->
+    <div class="modal fade" id="getCodeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content" id="myInput">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Oops!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>You already guessed that letter. Try again!</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+        </div>
+    </div>
+        
     <div class="container">
         <header>
             <img src="assets/images/harry-potter_header11.png" alt="Harry Potter Hangman" />
@@ -42,31 +62,10 @@
                     <button id="playAgain" class="btn">Play Again</button>
                 </div>
             </div>
-            <!-- Modal -->
-            <div class="modal fade" id="getCodeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content" id="myInput">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">Oops!</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <p>You already guessed that letter. Try again!</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-                </div>
-            </div>
         </main>
         <footer class="clearfix">
             <p>&copy; Images copyright Harry Potter</p>
         </footer>
-
-
     </div><!-- end container -->
     <!-- javascript link -->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>

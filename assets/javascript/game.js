@@ -196,11 +196,10 @@ document.getElementById("startBtn").addEventListener("click", newGame); {
             console.log(validLettersRemaining);
         }
         else {
-            alert("You already guessed that letter. Try again!")
-            // $('#getCodeModal').on('shown.bs.modal', function () {
-            //     $('#getCodeModal').trigger('focus')
-            //   })
-            // $("#getCodeModal").modal('show');
+            $('#getCodeModal').on('shown.bs.modal', function () {
+                $('#getCodeModal').trigger('focus')
+              })
+            $("#getCodeModal").modal('show');
         }
 
     }
