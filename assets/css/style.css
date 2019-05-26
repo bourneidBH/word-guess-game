@@ -103,6 +103,9 @@ footer p {
 .resetShow {
     display: inline-block;
 }
+.modal-content {
+    background: #fff;
+}
 @media screen and (max-width: 640px) {
     .container {
         width: 100%;

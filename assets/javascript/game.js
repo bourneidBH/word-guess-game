@@ -192,10 +192,15 @@ document.getElementById("startBtn").addEventListener("click", newGame); {
             document.getElementById("man").src = "assets/images/hangman-" + wrongGuessesLeft + ".png";
 
             // remove guessed letter from valid letters remaining
-            validLettersRemaining = removeGuessed(validLetters, userGuess);
+            validLettersRemaining = removeGuessed(validLettersRemaining, userGuess);
+            console.log(validLettersRemaining);
         }
         else {
             alert("You already guessed that letter. Try again!")
+            // $('#getCodeModal').on('shown.bs.modal', function () {
+            //     $('#getCodeModal').trigger('focus')
+            //   })
+            // $("#getCodeModal").modal('show');
         }
 
     }
@@ -220,6 +225,7 @@ function resetGame () {
     wrongLetters = [];
     answerDisplay = [];
     correctLetters = [];
+    validLettersRemaining = validLetters;
 
     //reset hangman image to original
     document.getElementById("man").src = "assets/images/hangman-" + wrongGuessesLeft + ".png";
