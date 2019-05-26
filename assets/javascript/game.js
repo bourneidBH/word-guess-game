@@ -74,7 +74,6 @@ function newGame () {
 
     //Computer selects a word from the array
     word = wordArray[Math.floor(Math.random() * wordArray.length)];
-        console.log("The current word chosen is: " + word); // Testing via Console.Log
 
     //Grab the current word and break it apart into each individual letter
     wordLetters = word.split("");
@@ -196,6 +195,7 @@ document.getElementById("startBtn").addEventListener("click", newGame); {
             console.log(validLettersRemaining);
         }
         else {
+            // alert("You already guessed that letter. Try again!")
             $('#getCodeModal').on('shown.bs.modal', function () {
                 $('#getCodeModal').trigger('focus')
               })
@@ -206,6 +206,8 @@ document.getElementById("startBtn").addEventListener("click", newGame); {
 
 // function to start game & load first word. Display blanks for each letter in word.
 function resetGame () {
+    // hide start button
+    document.getElementById("startBtn").style.display = "none";
 
     //Computer selects a word from the array
     word = wordArray[Math.floor(Math.random() * wordArray.length)];
