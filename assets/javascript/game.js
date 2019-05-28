@@ -57,6 +57,19 @@ var wins = 0;
 var losses = 0;
 var wrongGuessesLeft = 6; 
 
+// function to add the correct number of blanks to the answerDisplay that corresponds with the length of the current word
+
+function displayAnswer() {
+    var e = "";   
+        
+    for (var y=0; y<wordLetters.length; y++)
+    {
+        e += "_ ";
+        answerDisplay[y] = "_";
+    }
+    document.getElementById("blanks").innerHTML = e;
+}
+
 // function to remove already guess letters from validLetters array
 function removeGuessed(arr, value) {
 
@@ -89,22 +102,10 @@ function newGame () {
     answerDisplay = [];
     correctLetters = [];
 
-    //Add the correct number of blanks to the answerDisplay that corresponds with the length of the current word
-
-        function displayAnswer() {
-        var e = "";   
-            
-        for (var y=0; y<wordLetters.length; y++)
-        {
-            e += "_ ";
-            answerDisplay[y] = "_";
-        }
-        document.getElementById("blanks").innerHTML = e;
-    }
+    // set answer display blanks
     displayAnswer();
    
 }
-
 
 //press button to start game
 document.getElementById("startBtn").addEventListener("click", newGame); {
@@ -155,12 +156,12 @@ document.getElementById("startBtn").addEventListener("click", newGame); {
                 document.getElementById("winMessage").classList.toggle("resetShow");
 
                 //Show game reset button
-            function gameOver() {
+                function gameOver() {
                     divGameOver = document.getElementById("gameReset");
                     divGameOver.className =+ " " + "resetShow";
                     //clear wrong letter list
                     wrongLetters = [];
-
+                    wrongGuessesLeft = 6;
                 }
                 gameOver();
             }
@@ -176,6 +177,7 @@ document.getElementById("startBtn").addEventListener("click", newGame); {
                     divGameOver.className += " " + "resetShow";
                     //clear wrong letter list
                     wrongLetters = [];
+                    wrongGuessesLeft = 6;
                 }
                 gameOver();
 
@@ -209,18 +211,6 @@ function resetGame () {
     // hide start button
     document.getElementById("startBtn").style.display = "none";
 
-    //Computer selects a word from the array
-    word = wordArray[Math.floor(Math.random() * wordArray.length)];
-        console.log("The current word chosen is: " + word); // Testing via Console.Log
-
-    //Grab the current word and break it apart into each individual letter
-    wordLetters = word.split("");
-        console.log("The current word's letters are: " + wordLetters); // Testing via Console.Log
-
-    //Grab the current word and get the number of letters in it
-    numBlanks = wordLetters.length;
-        console.log("The number of letters in the current word is: " + numBlanks); // Testing via Console.Log
-
     //Reset game variables needed to be cleared before each new game starts
     wrongGuessesLeft = 6;
     wrongLetters = [];
@@ -231,23 +221,22 @@ function resetGame () {
     //reset hangman image to original
     document.getElementById("man").src = "assets/images/hangman-" + wrongGuessesLeft + ".png";
 
-
     //hide previous win/loss message
     document.getElementById("winMessage").innerHTML = "";
     document.getElementById("lossMessage").innerHTML = "";
 
-    //Add the correct number of blanks to the answerDisplay that corresponds with the length of the currentWord
+    //Computer selects a word from the array
+    word = wordArray[Math.floor(Math.random() * wordArray.length)];
 
-        function displayAnswer() {
-        var e = "";   
-            
-        for (var y=0; y<wordLetters.length; y++)
-        {
-            e += "_ ";
-            answerDisplay[y] = "_"
-        }
-        document.getElementById("blanks").innerHTML = e;
-    }
+    //Grab the current word and break it apart into each individual letter
+    wordLetters = word.split("");
+        console.log("The current word's letters are: " + wordLetters); // Testing via Console.Log
+
+    //Grab the current word and get the number of letters in it
+    numBlanks = wordLetters.length;
+        console.log("The number of letters in the current word is: " + numBlanks); // Testing via Console.Log
+
+    //Add the correct number of blanks to the answerDisplay that corresponds with the length of the currentWord
     displayAnswer(); 
    
 } 
