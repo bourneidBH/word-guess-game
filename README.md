@@ -1,8 +1,8 @@
-#Harry Potter Hangman Game
+# Harry Potter Hangman Game
 
 This game was created using javascript.
 
-##Rules
+## Rules
 
 Game starts when you press any letter key to make your first guess.
 
