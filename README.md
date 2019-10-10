@@ -19,4 +19,6 @@ This simple game requires no installations to run. Simply clone the repo and ope
 
 <img src="assets/images/hangman-screenshot_600x300.jpg" alt="Harry Potter Hangman" />
 
+Play the game: https://bourneid7.github.io/word-guess-game/
+
 
