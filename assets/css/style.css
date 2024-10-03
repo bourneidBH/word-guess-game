@@ -97,12 +97,10 @@ footer p {
     color: #8315c4;
     display: block;
 }
-.resetHidden {
+.hide {
     display: none;
 }
-.resetShow {
-    display: inline-block;
-}
+
 .modal-content {
     background: #fff;
 }

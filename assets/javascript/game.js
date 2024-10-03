@@ -1,6 +1,6 @@
 //global variables
 
-var wordArray = [
+const wordArray = [
     "HERMIONE", 
     "HOGWARTS", 
     "NIFFLER", 
@@ -34,60 +34,50 @@ var wordArray = [
     "RAVENCLAW"
 ];
 // empty variable to hold current word choice from the array
-var word = "";
+let word = "";
 // Empty variable to hold the actual letters in the word
-var wordLetters = [];
+let wordLetters = [];
 // Variable that holds the number of blanks "_" in the word
-var numBlanks = 0;
+let numBlanks = 0;
 // Variable to record user guess
-userGuess = "";
+let userGuess = "";
 // Variable hide/show game over buttons
-var divGameOver = "";
+let divGameOver = "";
+// modal message for invalid guesses
+let modalMessage = "";
 
 // Empty array to store the answer as it displays for the user
-var answerDisplay = [];
+let answerDisplay = [];
 // Empty array to hold all correct guesses
-var correctLetters = [];
+let correctLetters = [];
 // Empty array to hold all the wrong guesses
-var wrongLetters = [];
-var validLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+let wrongLetters = [];
+const validLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 
 //Game Stats
-var wins = 0;
-var losses = 0;
-var wrongGuessesLeft = 6; 
+let wins = 0;
+let losses = 0;
+let wrongGuessesLeft = 6; 
 
 // function to add the correct number of blanks to the answerDisplay that corresponds with the length of the current word
 
 function displayAnswer() {
-    var e = "";   
+    let e = "";   
         
-    for (var y=0; y<wordLetters.length; y++)
+    for (let i=0; i < wordLetters.length; i++)
     {
         e += "_ ";
-        answerDisplay[y] = "_";
+        answerDisplay.push("_");
     }
     document.getElementById("blanks").innerHTML = e;
 }
 
-// function to remove already guess letters from validLetters array
-function removeGuessed(arr, value) {
-
-    return arr.filter(function(ele){
-        return ele != value;
-    });
- 
- }
- 
- var validLettersRemaining = validLetters;
-
-
 // function to start game & load first word. Display blanks for each letter in word.
 function newGame () {
-
+    isFirstGame = false;
     //Computer selects a word from the array
     word = wordArray[Math.floor(Math.random() * wordArray.length)];
-
+    
     //Grab the current word and break it apart into each individual letter
     wordLetters = word.split("");
         console.log("The current word's letters are: " + wordLetters); // Testing via Console.Log
@@ -102,147 +92,104 @@ function newGame () {
     answerDisplay = [];
     correctLetters = [];
 
+    //hide previous win/loss message
+    document.getElementById("winMessage").innerHTML = "";
+    document.getElementById("lossMessage").innerHTML = "";
+    
     // set answer display blanks
     displayAnswer();
-   
+    updateDisplay();
+    if (!document.getElementById("startBtn").classList.contains("hide")) {
+        document.getElementById("startBtn").classList.add("hide");
+    }
+    if (!document.getElementById("playAgain").classList.contains("hide")) {
+        document.getElementById("playAgain").classList.add("hide");
+    }
+
+}
+
+function checkGuess(chosenLetter, wordToGuess) {
+    // check if letter has already been guessed
+    if (wrongLetters.includes(chosenLetter) || correctLetters.includes(chosenLetter)) {
+        handleInvalidGuess('duplicate')
+    } else if (!validLetters.includes(chosenLetter)) {
+        handleInvalidGuess('invalid')
+    } else {
+        if (wordToGuess.includes(chosenLetter)) {
+            handleCorrectGuess(chosenLetter, wordToGuess)
+        } else {
+            handleWrongGuess(chosenLetter)
+        }
+    }
+}
+
+function scoreWin() {
+    wins++
+    document.getElementById("winMessage").innerHTML = "You win!" + "<br>";
+    document.getElementById("playAgain").classList.remove("hide");
+}
+
+function scoreLoss() {
+    losses++
+    document.getElementById("lossMessage").innerHTML = "Game over. You Lost!" + "<br>" + "The correct word is " + word + "<br>";
+    document.getElementById("playAgain").classList.remove("hide");
+}
+
+function handleInvalidGuess(reason) {
+    // alert("You already guessed that letter. Try again!")
+    const message = reason === 'duplicate' ? "You already guessed that letter. Try again." : "That wasn't a letter. Try again."
+    document.getElementById("modal-message").innerHTML = message
+    $('#getCodeModal').on('shown.bs.modal', function () {
+        $('#getCodeModal').trigger('focus')
+        })
+
+    $("#getCodeModal").modal('show');
+}
+
+function handleWrongGuess(chosenLetter) {
+    wrongLetters.push(chosenLetter)
+    wrongGuessesLeft -= 1
+    if (wrongGuessesLeft === 0) {
+        scoreLoss()
+    }
+    updateDisplay()
+}
+
+function handleCorrectGuess(chosenLetter, chosenWord) {
+    correctLetters.push(chosenLetter)
+    for (let i = 0; i < chosenWord.length; i++) {
+        if (chosenWord[i] === chosenLetter) {
+            answerDisplay[i] = chosenLetter
+        }
+    }
+    // check if all blanks are removed. This constitutes a win
+    if (!answerDisplay.includes("_")) {
+        scoreWin()
+    }
+    updateDisplay()
+}
+
+function updateDisplay() {
+    //Change HTML elements to display current information
+    document.getElementById("remGuesses").innerHTML = wrongGuessesLeft;
+    document.getElementById("totalWins").innerHTML = wins;
+    document.getElementById("totalLosses").innerHTML = losses;
+    document.getElementById("guessedLetters").innerHTML = wrongLetters;
+    document.getElementById("blanks").innerHTML = answerDisplay.join(" ");
+
+    //update hangman image with next step
+    document.getElementById("man").src = "assets/images/hangman-" + wrongGuessesLeft + ".png";
 }
 
 //press button to start game
 document.getElementById("startBtn").addEventListener("click", newGame); {
     newGame();
-
     // function to record user key choice. Change case to all caps.
     document.onkeyup = function(event) {
         userGuess = event.key.toUpperCase();
-        console.log("user guess is " + userGuess);
-
-        // check if userGuess is in validLetters array
-        if (validLettersRemaining.indexOf(userGuess) != -1) {
-
-            // check if user key choice is included in word. 
-            if (wordLetters.indexOf(userGuess) != -1) {
-
-                //for loop to step through each value in wordLetters array 
-                //check each index for match to userGuess
-                //for each match push userGuess to correctLetters 
-                for (var w = 0; w < wordLetters.length; w++) {
-                    if (wordLetters[w] === userGuess) {
-                        correctLetters.push(userGuess);
-                        console.log("correct letters are: " + correctLetters);
-
-                        console.log("correct letter is at index " + wordLetters[w]);
-                        answerDisplay[w] = userGuess;
-                        
-                    }
-                }
-                console.log(answerDisplay);
-                //If key choice included in word display letter in appropriate spot. 
-
-                document.getElementById("blanks").innerHTML = answerDisplay.join(" ");
-
-            }
-            //If not included display letter in letters already guessed, increment number of guesses remaining down by 1 
-            else {
-                wrongLetters.push(userGuess);
-                wrongGuessesLeft = wrongGuessesLeft -1;
-                console.log("wrong letters are: " + wrongLetters);
-                console.log("wrong guesses left: " + wrongGuessesLeft);
-            } 
-
-            //check for win. 
-            if (correctLetters.length === wordLetters.length) {
-                wins ++;
-                document.getElementById("winMessage").innerHTML = "You win!" + "<br>";
-                document.getElementById("winMessage").classList.toggle("resetShow");
-
-                //Show game reset button
-                function gameOver() {
-                    divGameOver = document.getElementById("gameReset");
-                    divGameOver.className =+ " " + "resetShow";
-                    //clear wrong letter list
-                    wrongLetters = [];
-                    wrongGuessesLeft = 6;
-                }
-                gameOver();
-            }
-            //check for loss
-            if (wrongGuessesLeft === 0) {
-                losses ++;
-                document.getElementById("lossMessage").innerHTML = "Game over. You Lost!" + "<br>" + "The correct word is " + word + "<br>";
-                document.getElementById("lossMessage").classList.add("resetShow");
-
-                //Show game reset button
-                function gameOver() {
-                    divGameOver = document.getElementById("gameReset");
-                    divGameOver.className += " " + "resetShow";
-                    //clear wrong letter list
-                    wrongLetters = [];
-                    wrongGuessesLeft = 6;
-                }
-                gameOver();
-
-            }
-            //Change HTML elements to display current information
-            document.getElementById("remGuesses").innerHTML = wrongGuessesLeft;
-            document.getElementById("totalWins").innerHTML = wins;
-            document.getElementById("totalLosses").innerHTML = losses;
-            document.getElementById("guessedLetters").innerHTML = wrongLetters;
-
-
-            //update hangman image with next step
-            document.getElementById("man").src = "assets/images/hangman-" + wrongGuessesLeft + ".png";
-
-            // remove guessed letter from valid letters remaining
-            validLettersRemaining = removeGuessed(validLettersRemaining, userGuess);
-            console.log(validLettersRemaining);
-        }
-        else {
-            // alert("You already guessed that letter. Try again!")
-            $('#getCodeModal').on('shown.bs.modal', function () {
-                $('#getCodeModal').trigger('focus')
-              })
-            $("#getCodeModal").modal('show');
-        }
-
+        checkGuess(userGuess, word)
     }
-
-// function to start game & load first word. Display blanks for each letter in word.
-function resetGame () {
-    // hide start button
-    document.getElementById("startBtn").style.display = "none";
-
-    //Reset game variables needed to be cleared before each new game starts
-    wrongGuessesLeft = 6;
-    wrongLetters = [];
-    answerDisplay = [];
-    correctLetters = [];
-    validLettersRemaining = validLetters;
-
-    //reset hangman image to original
-    document.getElementById("man").src = "assets/images/hangman-" + wrongGuessesLeft + ".png";
-
-    //hide previous win/loss message
-    document.getElementById("winMessage").innerHTML = "";
-    document.getElementById("lossMessage").innerHTML = "";
-
-    //Computer selects a word from the array
-    word = wordArray[Math.floor(Math.random() * wordArray.length)];
-
-    //Grab the current word and break it apart into each individual letter
-    wordLetters = word.split("");
-        console.log("The current word's letters are: " + wordLetters); // Testing via Console.Log
-
-    //Grab the current word and get the number of letters in it
-    numBlanks = wordLetters.length;
-        console.log("The number of letters in the current word is: " + numBlanks); // Testing via Console.Log
-
-    //Add the correct number of blanks to the answerDisplay that corresponds with the length of the currentWord
-    displayAnswer(); 
-   
-} 
-
-    // function to load next word.
-    document.getElementById("playAgain").addEventListener("click", resetGame);
-    resetGame();
-
 }
+
+// function to load next word.
+document.getElementById("playAgain").addEventListener("click", newGame);

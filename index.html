@@ -15,7 +15,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content" id="myInput">
             <div class="modal-body">
-                <p>You already guessed that letter. Try again!</p>
+                <p id="modal-message"></p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn" data-dismiss="modal">Close</button>
@@ -37,9 +37,7 @@
             <!-- game text column -->
             <div class="col-md-8">
                 <div class="clearfix">
-                    <p>
-                        <button id="startBtn" class="btn">Start Game</button>
-                    </p>
+                    <button id="startBtn" class="btn">Start Game</button>
                     <p>Use letter keys to choose your guess.</p>
                 
                     <h2>Current word</h2>
@@ -52,8 +50,8 @@
                     <p id="winMessage" class="gameMessage"></p>
                     <p id="lossMessage" class="gameMessage"></p>
                 </div>
-                <div id="gameReset" class="resetHidden">
-                    <button id="playAgain" class="btn">Play Again</button>
+                <div id="gameReset">
+                    <button id="playAgain" class="btn hide">Play Again</button>
                 </div>
             </div>
         </main>
